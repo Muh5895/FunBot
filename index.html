@@ -260,6 +260,9 @@
         <div class
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kullanıcı Yorumları</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -267,6 +270,7 @@
             background-color: #1a1a1a;
             color: white;
             font-family: Arial, sans-serif;
+            overflow: hidden; /* Taşan içeriği gizle */
         }
 
         .carousel {
@@ -283,11 +287,12 @@
 
         .cardWBg {
             background-color: #2c2c2c;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             margin: 10px;
-            width: 300px; /* Kart genişliği */
+            width: 200px; /* Kart genişliği */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: inline-block; /* Kartların yan yana dizilmesi için */
         }
 
         @keyframes scroll {
@@ -295,7 +300,7 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-50%); /* Kartların toplam genişliğine göre ayarlayın */
+                transform: translateX(-100%); /* Tüm kartların kaydırılması */
             }
         }
     </style>
@@ -325,9 +330,9 @@
                 <div class="p-6 items-center overflow-hidden mt-5 mb-5">
                     <p class="smallText opacity-80"><i class="fa-solid fa-star gradientColor"></i> <i class="fa-solid fa-star gradientColor"></i> <i class="fa-solid fa-star gradientColor"></i> <i class="fa-solid fa-star gradientColor"></i> <i class="fa-solid fa-star gradientColor"></i></p>
                     <p class="boldText text-white opacity-90 mt-3"><b>Altın Kadar İyi</b></p>
-                    <p class="smallText text-white opacity-80 mt-3">Bot Komutları Çok Güzel Müq Komutları hoşuma gitti </p>
+                    <p class="smallText text-white opacity-80 mt-3"> Bot Komutları Çok Güzel Müq Komutları hoşuma gitti </p>
                     <p class="smallText text-white opacity-80 mt-8">ghostkurt 🇹🇷</p>
- </div>
+                </div>
             </div>
             <div class="cardWBg rounded-xl h-full">
                 <div class="p-6 items-center overflow-hidden mt-5 mb-5">
@@ -365,8 +370,8 @@
                 <div class="p-6 items-center overflow-hidden mt-5 mb-5">
                     <p class="smallText opacity-80"><i class="fa-solid fa-star gradientColor"></i> <i class="fa-solid fa-star gradientColor"></i> <i class="fa-solid fa-star gradientColor"></i> <i class="fa-solid fa-star gradientColor"></i> <i class="fa-solid fa-star gradientColor"></i></p>
                     <p class="boldText text-white opacity-90 mt-3"><b>Güzel</b></p>
-                    <p class="smallText text-white opacity-80 mt-3">Bdfd'den yapılmış en güzel botlar arasında</p>
-                    <p class="smallText text-white opacity-80 mt- 8">lowsx 🇹🇷</p>
+ <p class="smallText text-white opacity-80 mt-3">Bdfd'den yapılmış en güzel botlar arasında</p>
+                    <p class="smallText text-white opacity-80 mt-8">lowsx 🇹🇷</p>
                 </div>
             </div>
             <div class="cardWBg rounded-xl h-full">
@@ -385,12 +390,17 @@
     const carousel = document.querySelector('.carousel');
     const cards = document.querySelectorAll('.grid > div');
     const totalWidth = Array.from(cards).reduce((acc, card) => acc + card.offsetWidth, 0);
-
+    
+    // Kartların toplam genişliğini ayarlama
     carousel.style.width = `${totalWidth}px`;
+
+    // Sonsuz kaydırma için kopyalama
+    const clone = carousel.innerHTML;
+    carousel.innerHTML += clone; // Kartları iki katına çıkar
 </script>
 
 </body>
-    </html>
+</html>
             </div>
             <br>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 mt-8">
